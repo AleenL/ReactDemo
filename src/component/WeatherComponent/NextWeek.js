@@ -2,7 +2,7 @@
 import React from 'react'
 
 //import css
-import './NextWeek.css'
+import './less/NextWeek.less'
 
 //import component
 import Weekdaytmp from './Weekdaytmp'
@@ -26,7 +26,7 @@ class NextWeek extends React.Component{
 		return(
 			<div className='NextWeekWeather'>
 				{this.state.future.map((value,index)=>{
-					if(index>=6) return;
+					if(index>=6) return ;
 					if(this.props.getDate === 'weather'){
 						return (
 							<div className='iconList' key={index}>

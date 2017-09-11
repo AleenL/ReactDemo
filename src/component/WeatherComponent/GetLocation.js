@@ -1,24 +1,19 @@
 //import React 
 import React from 'react'
-import { render } from 'react-dom'
+//import Router
+import { Link } from 'react-router-dom'
 
-//import React-router
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom'
 
 //import CSS
-import './Weather.css'
-import './FutureWeather.css'
+import './less/Weather.less'
+import './less/FutureWeather.less'
 
 //import component
 import axios from 'axios'
 import Feel from './Feel'
 import NextWeek from './NextWeek'
 import WeatherEN from './WeatherEN'
+import Suggestion from '../SuggestionComponent/Suggestion'
 
 
 
@@ -28,7 +23,8 @@ class GetLocation extends React.Component{
 		this.state = {
 			Weather:{
 				now:{},
-				future:[]
+				future:[],
+				today:[]
 			},
 			futureWeather:{}
 		}
@@ -76,6 +72,7 @@ class GetLocation extends React.Component{
 	getWeather(data){
 		axios.get(`https://weixin.jirengu.com/weather/now?cityid=${data}`)
 		.then(res=>{
+			console.log(res.data)
 			this.setState({Weather:res.data.weather[0]})
 		}).catch(res=>{
 			console.error('error')
@@ -90,7 +87,9 @@ class GetLocation extends React.Component{
 				<div className="weatherMsg">
 				{
 					this.state.Weather.future.map((value,index)=>{
-						if(index >1 ) return;
+						if(index >1 ) return false;
+						if(index ===0)
+							return <Link to='/Suggestion' key={index} ><WeatherEN weather={value} /></Link>
 						return <WeatherEN key={index} weather={value} />
 					})
 				}

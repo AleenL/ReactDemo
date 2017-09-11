@@ -1,19 +1,13 @@
 //import React 
 import React from 'react'
-import { render } from 'react-dom'
 
-//import React-router
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom'
+//import LESS
+import './less/Background.less'
 
-//import CSS
-import './Background.css'
 //import component
 import GetLocation from './GetLocation'
+
+
 
 class Background extends React.Component{
 	constructor(props) {
@@ -26,9 +20,8 @@ class Background extends React.Component{
 		}
 	}
 	
-	componentDidMount() {
-		setInterval(() => this.setState({date:new Date}),100000)
-	}
+	//页面主要是更新背景图片
+
 
 	render(){	
 		const hours = this.state.date.getHours()
@@ -49,7 +42,7 @@ class Background extends React.Component{
 			
 		return(
 			<div className="Background" style={{backgroundImage:'url('+BackgroundUrl+')'}}>
-				<Route exact  path='/' component={GetLocation}/>
+				<GetLocation />
 			</div>
 		)
 	}	

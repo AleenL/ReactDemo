@@ -1,0 +1,21 @@
+store = {
+	wetaher:{},
+	city:{city:'西安',name:'xian'},
+	account:{user:'jack',password:'SNSJUIOMSH',eMail:'xx@qq.xxx'},
+	componet:{
+		account:this.store.account,
+		componentSet:{
+			time:false,
+			future:false,
+			Tmp:'OC',
+			language:'CN',
+			feel:true
+		},
+		Theme:{
+			Theme1:false,
+			Theme2:true,
+			Theme3:false,
+			Theme4:flase
+		}
+	}
+}

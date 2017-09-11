@@ -1,26 +1,23 @@
-//import React 
 import React from 'react'
 import { render } from 'react-dom'
-
-//import React-router
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom'
-
-//import CSS
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import App from './Redux/App'
+import todoApp from './Redux/reducers'
+import Routers from './component/Router'
 import './index.css'
 
-//import component
-import Backgorund from './component/WeatherComponent/Background'
+export let store = createStore(todoApp)
+console.log(store.getState())
 
-
-render(
-  <Router>
-    <Route path='/' component={Backgorund} />
-  </Router>,
-  document.getElementById('root')
+let unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
 )
 
+let rootElement = document.getElementById('root')
+render(
+  <Provider store={store}>
+    <Routers />
+  </Provider>,
+  rootElement
+)
